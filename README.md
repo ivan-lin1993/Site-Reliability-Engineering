@@ -16,10 +16,10 @@ MYSQL_PASSWORD="password"
 ```bash
 $ docker-compose up
 ```
-
-### Build sample laravel (php framework) site
+## Plus
+### Build Flask web app
 ```bash
-cd ./Basic
+cd ./Plus
 ```
 #### Edit .env
 Copy the .env.example and change the mysql password
@@ -29,7 +29,7 @@ MYSQL_DATABASE="db"
 MYSQL_USER="user"
 MYSQL_PASSWORD="password"
 ```
-### Please implement mysqldump backup shell (shell script)
+#### Run
 ```bash
-./backup.sh
+$ docker-compose up
 ```
