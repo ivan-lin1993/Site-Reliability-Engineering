@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  # DB
+  db:
+    image: "mysql:5.7"
+    restart: always
+    command: --init-file /data/init.sql
+    volumes:
+        - ./init.sql:/data/init.sql
+    env_file:
+    - .env
+    networks:
+      - app-network
+    ports:
+      - "3307:3306"
+
+  # flask app
+  app:
+    build: .
+    restart: always
+    ports:
+      - "5000:5000"
+    networks:
+      - app-network
+        
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge

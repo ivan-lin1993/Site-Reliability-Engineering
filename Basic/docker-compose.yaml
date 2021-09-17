@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  # DB
+  db:
+    container_name: db
+    image: "mysql:5.7"
+    restart: always
+    env_file:
+    - .env
+    networks:
+      - app-network
+
+  # Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: smartclouds.site
+    restart: always
+    tty: true
+    volumes:
+      - ./app:/var/www/html/
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - app
+
+  # php app
+  app:
+    build: .
+    restart: always
+        
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge

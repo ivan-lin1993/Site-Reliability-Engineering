@@ -1,0 +1,5 @@
+flask
+flask-appbuilder
+mysqlclient
+pymysql
+requests
